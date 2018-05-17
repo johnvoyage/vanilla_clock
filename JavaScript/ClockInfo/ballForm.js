@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM Content Loaded");
+  console.log("ballForm.js loaded");
 
   const ballForm = document.createElement("form");
   ballForm.innerHTML = `
