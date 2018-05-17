@@ -1,11 +1,12 @@
 let canvas;
 let canvasContext;
 let clockInfoDiv;
+let numberOfBalls;
 
 document.addEventListener("DOMContentLoaded", () => {
   canvas = document.getElementById("clockCanvas");
   canvasContext = clockCanvas.getContext("2d");
-  drawInitialClock();
+  drawTracks();
   const ballForm = document.createElement("form");
   ballForm.innerHTML = `
     <label>Number of balls (27 - 127)</label>
@@ -21,32 +22,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const handleSubmit = event => {
   event.preventDefault();
-  const numberOfBalls = parseInt(event.target.children[1].value);
-
+  numberOfBalls = parseInt(event.target.children[1].value);
+  createBalls(numberOfBalls);
   event.target.reset();
 };
 
 const drawTracks = () => {
+  const trackCoords = { ...staticTracks, ...fluidTracks };
   for (let track in trackCoords) {
     canvasContext.beginPath();
-    canvasContext.moveTo([track].startingX, [track].startingY);
-    canvasContext.lineTo([track].endingX, [track].endingY);
+    canvasContext.moveTo(
+      trackCoords[track].startingX,
+      trackCoords[track].startingY
+    );
+    canvasContext.lineTo(
+      trackCoords[track].endingX,
+      trackCoords[track].endingY
+    );
     canvasContext.stroke();
   }
 };
-const drawInitialClock = () => {
-  drawTracks();
-  // drawMinuteTrack()
-  // drawMinuteTrack()
-  // drawMinuteTrack()
-};
-
-// const drawMinuteTrack = () => {
-//   canvasContext.beginPath();
-//   canvasContext.moveTo(
-//     minuteTrackCoords.startingX,
-//     minuteTrackCoords.startingY
-//   );
-//   canvasContext.lineTo(minuteTrackCoords.endingX, minuteTrackCoords.endingY);
-//   canvasContext.stroke();
-// };
