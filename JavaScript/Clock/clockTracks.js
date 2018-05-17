@@ -1,10 +1,8 @@
-const minTrackCoords = [200, 100, 600, 100];
-const fiveMinTrackCoords = [200, 200, 600, 200];
-const hourTrackCoords = [200, 300, 600, 300];
+// const minTrackCoords = [200, 100, 600, 100];
+// const fiveMinTrackCoords = [200, 200, 600, 200];
+// const hourTrackCoords = [200, 300, 600, 300];
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("clockTracks.js loaded");
-
   const clockCanvas = document.getElementById("clockCanvas");
 
   const minTrack = clockCanvas.getContext("2d");
