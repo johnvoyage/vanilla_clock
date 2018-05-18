@@ -29,7 +29,7 @@ const staticTracks = {
   ...createRows(),
   elevatorShaft: {
     startingX: ballDiameter,
-    startingY: ballDiameter,
+    startingY: ballDiameter + ballRadius,
     endingX: ballDiameter,
     endingY: canvasHeight - ballDiameter
   }
@@ -56,6 +56,13 @@ const fluidTracks = {
   }
 };
 
+// const exampleBall = {
+//   number: 1,
+//   color: "black",
+//   xCoordinate: ballRadius,
+//   yCoordinate: canvasHeight - ballRadius
+// };
+
 const ballArray = [
   {
     number: 1,
@@ -71,13 +78,14 @@ const ballArray = [
   },
   {
     number: 3,
-    color: BLUE,
+    color: RED,
     xCoordinate: ballRadius + ballDiameter,
     yCoordinate: canvasHeight - ballRadius
   }
 ];
 
 const minuteTrack = [];
-const fiveMinTrack = [];
+const fiveMinuteTrack = [];
 const hourTrack = [];
 const queueTrack = [];
+const originalOrder = [];

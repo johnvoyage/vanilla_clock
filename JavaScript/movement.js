@@ -1,8 +1,10 @@
-// const framesPerSecond = 30;
-//
-// setInterval(drawEverything, 1000 / framesPerSecond);
-//
-// setInterval(() => {
-//   moveEverything();
-//   drawEverything();
-// }, 1000 / framesPerSecond);
+const moveAllBalls = () => {
+  console.log(ballArray);
+  ballArray.map(ball => {});
+};
+
+const drawAllBalls = () => {
+  // console.log("draaww all");
+  drawBackground();
+  drawTracks();
+};

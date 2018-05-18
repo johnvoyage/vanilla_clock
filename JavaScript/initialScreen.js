@@ -2,11 +2,14 @@ let canvas;
 let canvasContext;
 let clockInfoDiv;
 let numberOfBalls;
+let examplePosition = -1;
 
 document.addEventListener("DOMContentLoaded", () => {
   canvas = document.getElementById("clockCanvas");
   canvasContext = clockCanvas.getContext("2d");
+  drawBackground();
   drawTracks();
+  startExampleBall();
   const ballForm = document.createElement("form");
   ballForm.innerHTML = `
     <label>Number of balls (27 - 127)</label>
@@ -28,6 +31,11 @@ const handleSubmit = event => {
   showClock();
 };
 
+const drawBackground = () => {
+  canvasContext.fillStyle = "grey";
+  canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+};
+
 const drawTracks = () => {
   const trackCoords = { ...staticTracks, ...fluidTracks };
   for (let track in trackCoords) {
@@ -42,4 +50,44 @@ const drawTracks = () => {
     );
     canvasContext.stroke();
   }
+};
+
+const startExampleBall = () => {
+  setInterval(() => {
+    moveExampleBall();
+    drawExampleBall();
+  }, 200);
+};
+
+const moveExampleBall = () => {
+  // console.log(exampleBall);
+  examplePosition > ballPositions.length - 2
+    ? (examplePosition = 0)
+    : (examplePosition += 1);
+};
+
+// const ballPositions = [
+//   { x: 20, y: 680 },
+//   { x: 20, y: 640 },
+//   { x: 20, y: 600 },
+//   { x: 20, y: 560 },
+//   { x: 20, y: 520 },
+//   { x: 20, y: 480 },
+//   { x: 20, y: 440 },
+//   { x: 20, y: 400 }
+
+const drawExampleBall = () => {
+  drawBackground();
+  drawTracks();
+
+  canvasContext.beginPath();
+  canvasContext.fillStyle = "black";
+  canvasContext.arc(
+    ballPositions[examplePosition].x,
+    ballPositions[examplePosition].y,
+    20,
+    0,
+    2 * Math.PI
+  );
+  canvasContext.fill();
 };

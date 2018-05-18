@@ -1,5 +1,3 @@
-let originalOrder;
-
 const ballCoords = {
   x: ballRadius + ballDiameter * 2,
   xDirection: 1,
@@ -22,16 +20,21 @@ const createBalls = numberOfBalls => {
     counter++;
   }
   drawBalls(ballArray);
-  originalOrder = [...ballArray];
-  hourTrack.push(originalOrder[0]);
-  setQueueTrack(originalOrder.slice(1));
+  // originalOrder = [...ballArray];
+  hourTrack.push(ballArray[0]);
+  setTrack(originalOrder, ballArray);
+  setTrack(queueTrack, originalOrder.slice(1));
   // console.log(originalOrder);
+  // console.log(minuteTrack);
+  // console.log(fiveMinuteTrack);
   // console.log(hourTrack);
   // console.log(queueTrack);
 };
 
-const setQueueTrack = ballArray => {
-  ballArray.forEach(ball => queueTrack.push(ball));
+// const setOriginalOrder = ballArray =>
+
+const setTrack = (trackArray, ballArray) => {
+  ballArray.forEach(ball => trackArray.push(ball));
 };
 
 const updateXCoord = (priorXCoord, ballNumber) => {
