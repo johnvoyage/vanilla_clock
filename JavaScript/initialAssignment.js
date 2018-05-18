@@ -8,8 +8,9 @@ const ballDiameter = ballRadius * 2;
 const createRows = () => {
   return ["first", "second", "third", "fourth", "fifth", "sixth"].map(
     (row, index) => {
-      const yCoordinate = canvasHeight - ballDiameter * index;
-      const isEvenRow = index % 2 === 0;
+      const yCoordinate = canvasHeight - ballDiameter * (index + 1);
+      const isEvenRow = (index + 1) % 2 === 0;
+      console.log(isEvenRow);
       return {
         startingX: isEvenRow ? ballDiameter * 2 : ballDiameter,
         startingY: yCoordinate,
@@ -19,6 +20,8 @@ const createRows = () => {
     }
   );
 };
+
+console.log(createRows());
 
 const staticTracks = {
   ...createRows(),
@@ -54,19 +57,19 @@ const fluidTracks = {
 const ballArray = [
   {
     number: 1,
-    color: "green",
+    color: "#2FA166",
     xCoordinate: fluidTracks.hour.startingX + ballRadius,
     yCoordinate: fluidTracks.hour.startingY - ballRadius
   },
   {
     number: 2,
-    color: "green",
+    color: "#2FA166",
     xCoordinate: ballRadius,
     yCoordinate: canvasHeight - ballRadius
   },
   {
     number: 3,
-    color: "grey",
+    color: "#5390EF",
     xCoordinate: ballRadius + ballDiameter,
     yCoordinate: canvasHeight - ballRadius
   }

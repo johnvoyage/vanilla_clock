@@ -91,13 +91,20 @@ const updateXCoord = (priorXCoord, ballNumber) => {
 
 const updateYCoord = (priorYCoord, ballNumber) => {
   // console.log(ballNumber);
-  return (ballNumber - 4) % 17 === 0 && ballNumber !== 4
-    ? priorYCoord - ballDiameter
-    : priorYCoord;
+  return !ballCoords.belowAnother ? priorYCoord - ballDiameter : priorYCoord;
 };
 
 const ballColor = ballNumber => {
-  return "grey";
+  if (
+    (ballNumber >= 3 && ballNumber <= 21) ||
+    (ballNumber >= 41 && ballNumber <= 59) ||
+    (ballNumber >= 79 && ballNumber <= 97) ||
+    ballNumber >= 117
+  ) {
+    return "#DA554F";
+  } else {
+    return "#E7AD43";
+  }
 };
 
 const drawBalls = ballArray => {
@@ -105,7 +112,7 @@ const drawBalls = ballArray => {
   drawBall(2);
   drawBall(3);
 
-  drawFirstRow(ballArray.slice(3));
+  drawOtherBalls(ballArray.slice(3));
   // drawSecondRow(ballArray.slice(22, 41));
   // ballArray.length
   // console.log(ballArray.slice(2, 22));
@@ -141,7 +148,7 @@ const drawBall = ball => {
   canvasContext.fill();
 };
 
-const drawFirstRow = ballArray => {
+const drawOtherBalls = ballArray => {
   for (let ball of ballArray) {
     console.log(ball);
     canvasContext.beginPath();
