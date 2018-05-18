@@ -7,7 +7,10 @@ const ballPositions = {
 
 const originalPositions = {};
 
-let totalMinutes = 0;
+let morning = true;
+let daysPassed = 0;
+let minutesPassed = 0;
+let minutesRemaining;
 
 document.addEventListener("DOMContentLoaded", () => {
   const boardDiv = document.getElementById("board");
@@ -18,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const queueDiv = document.getElementById("queuetrack");
 
   const ballClock = (numberOfBalls, numberOfMinutes = null) => {
-    ballPositions.hourTrack.push(1);
+    // ballPositions.hourTrack.push(1);
+    minutesRemaining = numberOfMinutes;
     putBallsOnQueueTrack(numberOfBalls);
     assignOriginalPositions(ballPositions);
     showTracks();
@@ -26,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const putBallsOnQueueTrack = number => {
-    for (let counter = 2; counter <= number; counter++) {
+    for (let counter = 1; counter <= number; counter++) {
       ballPositions.queueTrack.push(counter);
     }
   };
@@ -40,13 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const showTracks = () => {
     // debugger;
     boardDiv.innerHTML = `
-      <h4>Current time: ${timeFormat(
-        ballPositions.hourTrack.length
-      )}:${timeFormat(
-      ballPositions.fiveMinuteTrack.length * 5 +
-        ballPositions.minuteTrack.length
-    )}</h4>
-      <h3>Total minutes passed: ${totalMinutes}</h3>
+      <h2>Current time: ${hourAndMinutes()} ${amOrPm()}</h2>
+      <h3>Total days passed: ${dayFormat()}</h3>
+
+      <h3>Total minutes passed: ${minutesForm(minutesPassed)}</h3>
     `;
     minDiv.innerText = ballPositions.minuteTrack;
     fiveMinDiv.innerText = ballPositions.fiveMinuteTrack;
@@ -54,18 +55,75 @@ document.addEventListener("DOMContentLoaded", () => {
     queueDiv.innerText = ballPositions.queueTrack;
   };
 
-  const timeFormat = trackLength => {
-    return trackLength >= 10 ? trackLength : "0" + trackLength;
+  const hourAndMinutes = () => {
+    return `${timeFormat(ballPositions.hourTrack.length + 1)}:${timeFormat(
+      ballPositions.fiveMinuteTrack.length * 5 +
+        ballPositions.minuteTrack.length
+    )}`;
   };
+
+  const amOrPm = () => {
+    hourAndMinutes() === "12:00"
+      ? ((morning = !morning), (daysPassed += 0.5))
+      : null;
+    return morning ? "AM" : "PM";
+  };
+
+  const timeFormat = number => {
+    return number >= 10 ? number : "0" + number;
+  };
+
+  const dayFormat = () => {
+    return Math.floor(daysPassed);
+  };
+
+  const minutesFormat = number => {};
 
   const startClock = () => {
     setInterval(() => {
-      if (totalMinutes !== 325) {
+      // if (minutesPassed !== 325) {
+      // console.log("test1 ", minutesRemaining === null);
+      // console.log("test2: ", minutesRemaining - minutesPassed === 0);
+
+      if (keepGoingOrNot()) {
         moveNextBallInQueue();
-        totalMinutes += 1;
+        minutesPassed += 1;
         showTracks();
       }
-    }, 500);
+      // }
+    }, 1);
+  };
+
+  const keepGoingOrNot = () => {
+    return initialOrderTest() && numberOfMinutesTest() && letItRun();
+  };
+
+  const initialOrderTest = () => {
+    // debugger;
+    for (let track in ballPositions) {
+      let counter = 0;
+      for (let ball of ballPositions[track]) {
+        if (daysPassed === 15) {
+          console.log(originalPositions[track][counter]);
+          console.log(ball);
+        }
+
+        if (originalPositions[track][counter] !== ball) {
+          return false;
+        } else {
+          counter++;
+        }
+      }
+    }
+    return true;
+  };
+
+  const numberOfMinutesTest = () => {
+    return minutesRemaining === null || minutesRemaining - minutesPassed !== 0;
+  };
+
+  const letItRun = () => {
+    return true;
   };
 
   const moveNextBallInQueue = () => {
@@ -79,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTrackCheck("fiveMinuteTrack", 11)
           ? (clearTrack(ballPositions.fiveMinuteTrack),
             clearTrackCheck("hourTrack", 11)
-              ? clearTrack(ballPositions.hourCheck)
+              ? clearTrack(ballPositions.hourTrack)
               : ballPositions.hourTrack.push(ball))
           : ballPositions.fiveMinuteTrack.push(ball))
       : ballPositions.minuteTrack.push(ball);
@@ -125,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ballClock(30); // "30 balls cycle after 15 days"
   // ballClock(45) // "45 balls cycle after 378 days"
-  // ballClock(30, 325)
+  // ballClock(30, 325);
   /*
     {
       "Min":[],
