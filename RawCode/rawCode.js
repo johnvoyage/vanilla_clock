@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <h2>Current time: ${hourAndMinutes()} ${amOrPm()}</h2>
       <h3>Total days passed: ${dayFormat()}</h3>
 
-      <h3>Total minutes passed: ${minutesForm(minutesPassed)}</h3>
+      <h3>Total minutes passed: ${minutesFormat(minutesPassed)}</h3>
     `;
     minDiv.innerText = ballPositions.minuteTrack;
     fiveMinDiv.innerText = ballPositions.fiveMinuteTrack;
@@ -77,7 +77,18 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.floor(daysPassed);
   };
 
-  const minutesFormat = number => {};
+  const minutesFormat = number => {
+    return number
+      .toString()
+      .split("")
+      .reverse()
+      .join("")
+      .match(/.{1,3}/g)
+      .join(",")
+      .split("")
+      .reverse()
+      .join("");
+  };
 
   const startClock = () => {
     setInterval(() => {
