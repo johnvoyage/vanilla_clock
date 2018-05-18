@@ -63,6 +63,12 @@ const ballArray = [
     color: "green",
     xCoordinate: ballRadius,
     yCoordinate: canvasHeight - ballRadius
+  },
+  {
+    number: 3,
+    color: "grey",
+    xCoordinate: ballRadius + ballDiameter,
+    yCoordinate: canvasHeight - ballRadius
   }
 ];
 
