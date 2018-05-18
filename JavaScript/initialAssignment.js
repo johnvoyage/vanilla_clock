@@ -1,4 +1,4 @@
-const canvasHeight = 700;
+const canvasHeight = 680;
 const canvasWidth = 800;
 
 const ballRadius = 20;
@@ -29,30 +29,54 @@ const staticTracks = {
   ...createRows(),
   elevatorShaft: {
     startingX: ballDiameter,
-    startingY: ballDiameter + ballRadius,
+    startingY: ballDiameter,
     endingX: ballDiameter,
     endingY: canvasHeight - ballDiameter
+  },
+  horizontalTop: {
+    startingX: ballDiameter,
+    startingY: ballDiameter,
+    endingX: ballDiameter * 5,
+    endingY: ballDiameter
+  },
+  firstBarrier: {
+    startingX: ballDiameter * 5,
+    startingY: ballDiameter * 1,
+    endingX: ballDiameter * 5,
+    endingY: ballDiameter * 3
+  },
+  secondBarrier: {
+    startingX: ballDiameter * 11,
+    startingY: 0,
+    endingX: ballDiameter * 11,
+    endingY: ballDiameter * 5
+  },
+  thirdBarrier: {
+    startingX: ballDiameter * 4,
+    startingY: ballDiameter * 3,
+    endingX: ballDiameter * 4,
+    endingY: ballDiameter * 7
   }
 };
 
 const fluidTracks = {
   minute: {
     startingX: 200,
-    startingY: 100,
+    startingY: 120,
     endingX: 400,
-    endingY: 100
+    endingY: 120
   },
   fiveMinute: {
-    startingX: 400,
+    startingX: 200,
     startingY: 200,
-    endingX: 640,
+    endingX: 440,
     endingY: 200
   },
   hour: {
-    startingX: 200,
-    startingY: 300,
-    endingX: 680,
-    endingY: 300
+    startingX: 160,
+    startingY: 280,
+    endingX: 640,
+    endingY: 280
   }
 };
 

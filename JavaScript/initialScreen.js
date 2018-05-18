@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   canvasContext = clockCanvas.getContext("2d");
   drawBackground();
   drawTracks();
-  startExampleBall();
+  // startExampleBall();
   const ballForm = document.createElement("form");
   ballForm.innerHTML = `
     <label>Number of balls (27 - 127)</label>
@@ -56,7 +56,7 @@ const startExampleBall = () => {
   setInterval(() => {
     moveExampleBall();
     drawExampleBall();
-  }, 200);
+  }, 100);
 };
 
 const moveExampleBall = () => {
