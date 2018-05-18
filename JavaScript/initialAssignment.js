@@ -5,12 +5,16 @@ const ballRadius = 20;
 const halfRadius = ballRadius / 2;
 const ballDiameter = ballRadius * 2;
 
+const GREEN = "#2FA166";
+const BLUE = "#5390EF";
+const RED = "#DA554F";
+const YELLOW = "#E7AD43";
+
 const createRows = () => {
   return ["first", "second", "third", "fourth", "fifth", "sixth"].map(
     (row, index) => {
       const yCoordinate = canvasHeight - ballDiameter * (index + 1);
       const isEvenRow = (index + 1) % 2 === 0;
-      console.log(isEvenRow);
       return {
         startingX: isEvenRow ? ballDiameter * 2 : ballDiameter,
         startingY: yCoordinate,
@@ -20,8 +24,6 @@ const createRows = () => {
     }
   );
 };
-
-console.log(createRows());
 
 const staticTracks = {
   ...createRows(),
@@ -57,25 +59,25 @@ const fluidTracks = {
 const ballArray = [
   {
     number: 1,
-    color: "#2FA166",
+    color: GREEN,
     xCoordinate: fluidTracks.hour.startingX + ballRadius,
     yCoordinate: fluidTracks.hour.startingY - ballRadius
   },
   {
     number: 2,
-    color: "#2FA166",
+    color: GREEN,
     xCoordinate: ballRadius,
     yCoordinate: canvasHeight - ballRadius
   },
   {
     number: 3,
-    color: "#5390EF",
+    color: BLUE,
     xCoordinate: ballRadius + ballDiameter,
     yCoordinate: canvasHeight - ballRadius
   }
 ];
 
-const minBalls = [];
-const fiveMinBalls = [];
-const hourBalls = [];
-let queueBalls = [];
+const minuteTrack = [];
+const fiveMinTrack = [];
+const hourTrack = [];
+const queueTrack = [];
