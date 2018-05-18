@@ -25,11 +25,14 @@
 //     i++;
 //   }
 
+const ballCoords = [ballRadius + ballDiameter, canvasHeight - ballRadius];
+
 const createBalls = numberOfBalls => {
   let counter = 2;
   while (counter <= numberOfBalls) {
     ballArray.push({
-      ballNumber: counter,
+      number: counter,
+      color: null,
       xCoordinate: 0,
       yCoordinate: 0
     });
@@ -39,15 +42,39 @@ const createBalls = numberOfBalls => {
 };
 
 const drawBalls = ballArray => {
-  console.log(ballArray);
+  drawBall(1);
+  drawBall(2);
+
+  drawFirstRow(ballArray.slice(2, 22));
+  // drawSecondRow(ballArray.slice(22, 41));
+  // ballArray.length
+  // console.log(ballArray.slice(2, 22));
+  // console.log(ballArray.slice(22, 41));
+  // console.log(ballArray.slice(41, 60));
+  // console.log(ballArray.slice(60, 79));
+  // console.log(ballArray.slice(79, 98));
+  // console.log(ballArray.slice(98, 117));
+  // console.log(ballArray.slice(117, 127));
+};
+
+const drawBall = ball => {
+  const ballToDraw = ballArray[ball - 1];
   canvasContext.beginPath();
-  canvasContext.fillStyle = "grey";
+  canvasContext.fillStyle = ballToDraw.color;
   canvasContext.arc(
-    ballArray[0].xCoordinate,
-    ballArray[0].yCoordinate,
+    ballToDraw.xCoordinate,
+    ballToDraw.yCoordinate,
     20,
     0,
     2 * Math.PI
   );
   canvasContext.fill();
 };
+
+const drawFirstRow = ballArray => {
+  for (let ball of ballArray) {
+    console.log(ball);
+  }
+};
+
+// const drawSecondRow = ballArray => {};

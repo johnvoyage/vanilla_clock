@@ -24,7 +24,8 @@ const handleSubmit = event => {
   event.preventDefault();
   numberOfBalls = parseInt(event.target.children[1].value);
   createBalls(numberOfBalls);
-  event.target.reset();
+  event.target.remove();
+  showClock();
 };
 
 const drawTracks = () => {

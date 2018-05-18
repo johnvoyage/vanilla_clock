@@ -34,29 +34,35 @@ const fluidTracks = {
   minute: {
     startingX: 200,
     startingY: 100,
-    endingX: 600,
+    endingX: 400,
     endingY: 100
   },
   fiveMinute: {
-    startingX: 200,
+    startingX: 400,
     startingY: 200,
-    endingX: 600,
+    endingX: 640,
     endingY: 200
   },
   hour: {
     startingX: 200,
     startingY: 300,
-    endingX: 600,
+    endingX: 680,
     endingY: 300
   }
 };
-// const ballCoords = [20, 440];
 
 const ballArray = [
   {
-    ballNumber: 1,
+    number: 1,
+    color: "green",
     xCoordinate: fluidTracks.hour.startingX + ballRadius,
     yCoordinate: fluidTracks.hour.startingY - ballRadius
+  },
+  {
+    number: 2,
+    color: "green",
+    xCoordinate: ballRadius,
+    yCoordinate: canvasHeight - ballRadius
   }
 ];
 
