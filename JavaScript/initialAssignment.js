@@ -36,47 +36,65 @@ const staticTracks = {
   horizontalTop: {
     startingX: ballDiameter,
     startingY: ballDiameter,
-    endingX: ballDiameter * 5,
+    endingX: ballDiameter * 6,
     endingY: ballDiameter
   },
   firstBarrier: {
-    startingX: ballDiameter * 5,
-    startingY: ballDiameter * 1,
-    endingX: ballDiameter * 5,
+    startingX: ballDiameter * 7,
+    startingY: 0,
+    endingX: ballDiameter * 7,
     endingY: ballDiameter * 3
   },
   secondBarrier: {
-    startingX: ballDiameter * 11,
-    startingY: 0,
-    endingX: ballDiameter * 11,
-    endingY: ballDiameter * 5
+    startingX: ballDiameter * 7,
+    startingY: ballDiameter * 7,
+    endingX: ballDiameter * 7,
+    endingY: ballDiameter * 8
   },
   thirdBarrier: {
-    startingX: ballDiameter * 4,
-    startingY: ballDiameter * 3,
-    endingX: ballDiameter * 4,
+    startingX: ballDiameter * 7,
+    startingY: ballDiameter * 7,
+    endingX: ballDiameter * 8,
     endingY: ballDiameter * 7
+  },
+  fourthBarrier: {
+    startingX: ballDiameter * 8,
+    startingY: ballDiameter * 5,
+    endingX: ballDiameter * 8,
+    endingY: ballDiameter * 7
+  },
+  fifthBarrier: {
+    startingX: ballDiameter * 14,
+    startingY: 0,
+    endingX: ballDiameter * 14,
+    endingY: ballDiameter * 6
+  },
+  sixthBarrier: {
+    startingX: ballDiameter * 9,
+    startingY: ballDiameter * 6,
+    endingX: ballDiameter * 14,
+    endingY: ballDiameter * 6
   }
 };
 
 const fluidTracks = {
   minute: {
-    startingX: 200,
+    startingX: 80,
     startingY: 120,
-    endingX: 400,
+    endingX: 280,
     endingY: 120
   },
   fiveMinute: {
-    startingX: 200,
+    startingX: 40,
     startingY: 200,
-    endingX: 440,
+    endingX: 520,
     endingY: 200
   },
   hour: {
-    startingX: 160,
-    startingY: 280,
-    endingX: 640,
-    endingY: 280
+    startingX: 280,
+    startingY: 320,
+    endingX: 760,
+    endingY: 320
   }
 };
 
