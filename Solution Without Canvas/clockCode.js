@@ -23,18 +23,29 @@ let daysPassed = 0;
 let minutesPassed = 0;
 let minutesRemaining;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const boardDiv = document.getElementById("board");
-  const minDiv = document.getElementById("mintrack");
-  const fiveMinDiv = document.getElementById("fivemintrack");
-  const hourDiv = document.getElementById("hourtrack");
-  const queueDiv = document.getElementById("queuetrack");
+// const setTrack = (track, number) => {
+//   for (let counter = 1; counter <= number; counter++) {
+//     track.queueTrack.push(counter);
+//   }
+// };
+
+const clockStarted = () => {
+  // document.addEventListener("DOMContentLoaded", () => {
+  // const boardDiv = document.getElementById("board");
+  // const minDiv = document.getElementById("mintrack");
+  // const fiveMinDiv = document.getElementById("fivemintrack");
+  // const hourDiv = document.getElementById("hourtrack");
+  // const queueDiv = document.getElementById("queuetrack");
+  // const timeHeader = document.getElementById("time");
+  // const daysHeader = document.getElementById("days");
+  // const minPassedHeader = document.getElementById("minpassed");
+  // const minRemainingHeader = document.getElementById("minremain");
 
   const ballClock = (numberOfBalls, numberOfMinutes = null) => {
     minutesRemaining = numberOfMinutes;
     setTrack(ballPositions, numberOfBalls);
     setTrack(originalPositions, numberOfBalls);
-    showTracks();
+    showInfo();
     startClock();
   };
 
@@ -44,13 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const showTracks = () => {
-    boardDiv.innerHTML = `
-      <h2>Current time: ${hourAndMinutes()} ${amOrPm()}</h2>
-      <h3>Total days passed: ${dayFormat()}</h3>
-      <h3>Total minutes passed: ${minutesFormat(minutesPassed)}</h3>
-      <h3>Total minutes remaining: ${formatMinutesRemaining()}</h3>
-    `;
+  const showInfo = () => {
+    timeHeader.innerText = `Current time: ${hourAndMinutes()} ${amOrPm()}`;
+    daysHeader.innerText = `Total days passed: ${formatWithCommas(
+      dayFormat()
+    )}`;
+    minPassedHeader.innerText = `Total minutes passed: ${formatWithCommas(
+      minutesPassed
+    )}`;
+    minRemainingHeader.innerText = `Total minutes remaining: ${formatMinutesRemaining()}`;
     minDiv.innerText = `Balls: ${ballPositions.minuteTrack}`;
     fiveMinDiv.innerText = `Balls: ${ballPositions.fiveMinuteTrack}`;
     hourDiv.innerText = `Balls: ${ballPositions.hourTrack}`;
@@ -79,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.floor(daysPassed);
   };
 
-  const minutesFormat = number => {
+  const formatWithCommas = number => {
     return number
       .toString()
       .split("")
@@ -95,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const formatMinutesRemaining = () => {
     return minutesRemaining === null
       ? "N/A"
-      : minutesFormat(minutesRemaining - minutesPassed);
+      : formatWithCommas(minutesRemaining - minutesPassed);
   };
 
   const startClock = () => {
@@ -103,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (keepGoingOrNot()) {
         moveNextBallInQueue();
         minutesPassed += 1;
-        showTracks();
+        showInfo();
       }
     }, 1000 / framesPerSecond);
   };
@@ -196,4 +209,4 @@ document.addEventListener("DOMContentLoaded", () => {
       "Main": [11,5,26,18,2,30,19,8,24,10,29,20,16,21,28,1,23,14,27,9]
     }
   */
-});
+};
