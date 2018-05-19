@@ -15,7 +15,6 @@ let originalPositions;
 let morning;
 let daysPassed;
 let minutesPassed;
-let test;
 
 let interval = 0;
 const initialQueue = [];
