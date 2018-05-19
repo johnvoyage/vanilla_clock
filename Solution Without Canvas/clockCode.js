@@ -1,5 +1,9 @@
 let framesPerSecond = 1000;
 
+const letItRun = () => {
+  return false;
+};
+
 const ballPositions = {
   queueTrack: [],
   minuteTrack: [],
@@ -136,10 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return minutesRemaining === null || minutesRemaining - minutesPassed !== 0;
   };
 
-  const letItRun = () => {
-    return false;
-  };
-
   const moveNextBallInQueue = () => {
     moveFromQueueToMinute(ballPositions.queueTrack.shift());
   };
@@ -184,9 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ballPositions.queueTrack.push(ball);
   };
 
-  ballClock(30); // "30 balls cycle after 15 days"
+  // ballClock(27);
+  // ballClock(30); // "30 balls cycle after 15 days"
   // ballClock(45); // "45 balls cycle after 378 days"
-  // ballClock(30, 325);
+  ballClock(30, 325);
   /*
     {
       "Min":[],
