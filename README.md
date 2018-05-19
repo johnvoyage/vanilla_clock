@@ -23,5 +23,3 @@ Copy the file path of ./Solution Without Canvas/index.html
 Paste the path into a browser.
 Fill out the required and optional input and click 'run'
 ```
-
-# vanillajsclock
