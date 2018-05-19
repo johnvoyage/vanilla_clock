@@ -6,7 +6,7 @@ until the amount of minutes specified by the user is reached.
 
 ## Getting Started
 
-All that is needed is to fork and clone the repo.
+All that is needed is to clone the repo.
 
 ### Prerequisites
 
