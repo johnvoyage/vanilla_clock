@@ -1,51 +1,4 @@
-// let framesPerSecond = 1000;
-
-// let framesPerSecond;
-
-// const letItRun = () => {
-//   return false;
-// };
-// let isPaused = false;
-//
-// let ballPositions = {
-//   queueTrack: [],
-//   minuteTrack: [],
-//   fiveMinuteTrack: [],
-//   hourTrack: []
-// };
-//
-// let originalPositions = {
-//   queueTrack: [],
-//   minuteTrack: [],
-//   fiveMinuteTrack: [],
-//   hourTrack: []
-// };
-//
-// let morning = true;
-// let daysPassed = 0;
-// let minutesPassed = 0;
-// let minutesRemaining;
-
-// const setTrack = (track, number) => {
-//   for (let counter = 1; counter <= number; counter++) {
-//     track.queueTrack.push(counter);
-//   }
-// };
-
-// const clockStarted = (numberOfBalls, numberOfMinutes) => {
-// document.addEventListener("DOMContentLoaded", () => {
-// const boardDiv = document.getElementById("board");
-// const minDiv = document.getElementById("mintrack");
-// const fiveMinDiv = document.getElementById("fivemintrack");
-// const hourDiv = document.getElementById("hourtrack");
-// const queueDiv = document.getElementById("queuetrack");
-// const timeHeader = document.getElementById("time");
-// const daysHeader = document.getElementById("days");
-// const minPassedHeader = document.getElementById("minpassed");
-// const minRemainingHeader = document.getElementById("minremain");
-
 const clockStarted = (numberOfBalls, numberOfMinutes) => {
-  // console.log(numberOfMinutes);
   minutesRemaining = numberOfMinutes;
   setTrack(ballPositions, numberOfBalls);
   setTrack(originalPositions, numberOfBalls);
@@ -124,8 +77,6 @@ const startClock = () => {
         clockCycleDone();
       }
     }
-    // console.log(framesPerSecond);
-    console.log(Math.floor(1000 / framesPerSecond));
   }, 1000 / framesPerSecond);
 };
 
@@ -202,17 +153,3 @@ const moveFromFiveMinuteToHour = ball => {
 const moveFromHourToQueue = ball => {
   ballPositions.queueTrack.push(ball);
 };
-
-// clockStarted(27);
-// clockStarted(30); // "30 balls cycle after 15 days"
-// clockStarted(45); // "45 balls cycle after 378 days"
-// clockStarted(30, 325);
-/*
-    {
-      "Min":[],
-      "FiveMin":[22,13,25,3,7],
-      "Hour":[6,12,17,4,15],
-      "Main": [11,5,26,18,2,30,19,8,24,10,29,20,16,21,28,1,23,14,27,9]
-    }
-  */
-// };

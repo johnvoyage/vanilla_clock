@@ -8,37 +8,15 @@ let timeHeader;
 let daysHeader;
 let minPassedHeader;
 let minRemainingHeader;
-
-// let minutesRemaining;
 let framesPerSecond;
-let interval = 0;
-
 let isPaused;
-// = false;
-
 let ballPositions;
-// = {
-//   queueTrack: [],
-//   minuteTrack: [],
-//   fiveMinuteTrack: [],
-//   hourTrack: []
-// };
-
 let originalPositions;
-//  = {
-//   queueTrack: [],
-//   minuteTrack: [],
-//   fiveMinuteTrack: [],
-//   hourTrack: []
-// };
-
 let morning;
-// = true;
 let daysPassed;
-// = 0;
 let minutesPassed;
-// = 0;
 
+let interval = 0;
 const initialQueue = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -86,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const handleReset = event => {
-  console.log("reset");
   clearInterval(interval);
   resetForm();
   resetVariables();
@@ -102,29 +79,20 @@ const handlePausePlay = event => {
 const handleFormSubmit = event => {
   resetVariables();
   event.preventDefault();
-  // debugger;
-
   const numberOfBallsInput = parseInt(event.target.children[1].value);
   const minutesRemainingInput =
     event.target.children[4].value === ""
       ? null
       : event.target.children[4].value;
-  // console.log(event);
   framesPerSecond = parseInt(event.target.children[7].value);
-  // console.log(framesPerSecond);
   clockStarted(numberOfBallsInput, minutesRemainingInput);
-  // event.target.reset();
-  // event.target.remove();
   disableForm();
+  event.target.reset();
 };
 
 const clockCycleDone = () => {
   clearInterval(interval);
-  // showInfo();
   document.getElementById("pauseplaybutton").setAttribute("disabled", true);
-
-  // resetVariables();
-  // enableForm();
 };
 
 const resetVariables = () => {
