@@ -144,7 +144,6 @@ const moveFromHourToQueue = ball => {
   ballPositions.Main.push(ball);
 };
 
-// runClock(27);
 // runClock(30); // 30 balls cycle after 15 days.
 runClock(45); // 45 balls cycle after 378 days.
 // runClock(30, 325);
