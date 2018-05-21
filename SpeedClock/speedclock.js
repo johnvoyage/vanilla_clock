@@ -56,7 +56,7 @@ const startClock = () => {
     minutesPassed += 1;
     startClock();
   } else {
-    return minuteCap !== null
+    minuteCap !== null
       ? console.log(`Tracks after ${minutesPassed} minutes: `, ballPositions)
       : console.log(
           `${totalBalls} balls cycle after ${minutesToDays(
