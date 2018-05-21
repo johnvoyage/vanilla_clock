@@ -129,7 +129,7 @@ const clearTrack = track => {
 };
 
 // runClock(30); // 30 balls cycle after 15 days.
-// runClock(45); // 45 balls cycle after 378 days.
+runClock(45); // 45 balls cycle after 378 days.
 // runClock(30, 325);
 /*{
   "Min":[],
