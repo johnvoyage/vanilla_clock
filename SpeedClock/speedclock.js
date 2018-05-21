@@ -57,7 +57,7 @@ const startClock = () => {
     process.nextTick(() => startClock());
   } else {
     minuteCap !== null
-      ? console.log(`Tracks after ${minutesPassed} minutes: `, ballPositions)
+      ? console.log(ballPositions)
       : console.log(
           `${totalBalls} balls cycle after ${minutesToDays(
             minutesPassed
