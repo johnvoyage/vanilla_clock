@@ -25,7 +25,7 @@ const runClock = (numberOfBalls, numberOfMinutes = null) => {
   minutesPassed = 0;
   setTrack(originalPositions, numberOfBalls);
   setTrack(ballPositions, numberOfBalls);
-  startClock(0);
+  startClock();
 };
 
 const resetVariables = () => {
