@@ -128,25 +128,9 @@ const clearTrack = track => {
   }
 };
 
-const moveFromMinuteToFiveMinute = ball => {
-  clearTrackCheck("FiveMin", 9)
-    ? clearTrack(ballPositions.FiveMin)
-    : ballPositions.FiveMin.push(ball);
-};
-
-const moveFromFiveMinuteToHour = ball => {
-  clearTrackCheck("Hour", 11)
-    ? clearTrack(ballPositions.Hour)
-    : ballPositions.Hour.push(ball);
-};
-
-const moveFromHourToQueue = ball => {
-  ballPositions.Main.push(ball);
-};
-
 // runClock(30); // 30 balls cycle after 15 days.
-runClock(45); // 45 balls cycle after 378 days.
-// runClock(30, 325);
+// runClock(45); // 45 balls cycle after 378 days.
+runClock(30, 325);
 /*{
   "Min":[],
   "FiveMin":[22,13,25,3,7],
